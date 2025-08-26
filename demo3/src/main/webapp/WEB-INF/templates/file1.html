@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>file</title>
+</head>
+<body>
+<h2>文件上传</h2>
+<form action="upload" method="post" enctype="multipart/form-data">
+    文件:<input type="file" name="myfile" />
+    可选名:<input type="text" name="filename" />
+    <button type="submit">上传</button>
+</form>
+<br>
+<h2>文件下载</h2>
+<form action="download" method="post">
+    文件名：<input type="text" name="fileName" placeholder="请输入要下载的文件名">
+    <button>下载</button>
+</form>
+<br>
+<h2>删除文件</h2>
+<form action="delete" method="post">
+    <label for="fileName">文件名：</label>
+    <input type="text" id="fileName" name="fileName" required>
+    <button type="submit">删除</button>
+</form>
+<table>
+    <tr>
+    <th>名称</th>
+    </tr>
+    <tr th:each="f:${allfiles}">
+    <td th:text="${f.getName()}">文件名</td>
+    </tr>
+</table>
+</body>
+</html>
